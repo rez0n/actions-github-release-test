@@ -1,0 +1,33 @@
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  test:
+    name: Test actions-github-release action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release using "with"
+        id: node_release_with
+        uses: rez0n/actions-github-release@main
+        with:
+          repository: "nodejs/node"
+          type: "stable"
+
+      - name: Echo Release version (with)
+        env:
+          VERSION: ${{ steps.node_release_with.outputs.release }}
+        run: echo "Release ${VERSION}"
+      
+      - name: Get release using "env"
+        id: node_release_env
+        uses: rez0n/actions-github-release@main
+        env:
+          repository: "nodejs/node"
+          type: "stable"
+      
+      - name: Echo Release version (env)
+        env:
+          VERSION: ${{ steps.node_release_env.outputs.release }}
+        run: echo "Release ${VERSION}"
