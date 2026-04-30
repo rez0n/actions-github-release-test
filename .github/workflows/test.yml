@@ -35,3 +35,20 @@ jobs:
         env:
           VERSION: ${{ steps.node_release_env.outputs.release }}
         run: echo "Release ${VERSION}"
+
+  test-regex:
+    name: Test actions-github-release action
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get release using "env"
+        id: node_release_env
+        uses: rez0n/actions-github-release@main
+        env:
+          repository: "nodejs/node"
+          type: "stable"
+          filter: "^v24\.15\.0$"
+      
+      - name: Echo Release version (env)
+        env:
+          VERSION: ${{ steps.node_release_env.outputs.release }}
+        run: echo "Release ${VERSION}"
