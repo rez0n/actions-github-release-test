@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: Get release using "with"
         id: node_release_with
-        uses: rez0n/actions-github-release@v2.0
+        uses: rez0n/actions-github-release@main
         with:
           repository: "nodejs/node"
           type: "stable"
@@ -26,7 +26,7 @@ jobs:
     steps:
       - name: Get release using "env"
         id: node_release_env
-        uses: rez0n/actions-github-release@v2.0
+        uses: rez0n/actions-github-release@main
         env:
           repository: "nodejs/node"
           type: "stable"
