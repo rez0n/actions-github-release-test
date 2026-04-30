@@ -46,7 +46,7 @@ jobs:
         env:
           repository: "nodejs/node"
           type: "stable"
-          filter: "^v24\.15\.0$"
+          filter: '^v24\.15\.0$'
       
       - name: Echo Release version (env)
         env:
